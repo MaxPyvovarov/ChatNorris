@@ -14,6 +14,10 @@
 		display: flex;
 	}
 
+	&.Active {
+		background: #eee;
+	}
+
 	.Preview {
 		margin-left: 15px;
 

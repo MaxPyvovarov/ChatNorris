@@ -1,0 +1,14 @@
+.ActiveChatHeader {
+	background: #eee;
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	padding: 15px 20px;
+	border-bottom: 1px solid #ccc;
+
+	h3 {
+		margin: 0;
+		padding: 10px 0 0 15px;
+		font-weight: 400;
+	}
+}

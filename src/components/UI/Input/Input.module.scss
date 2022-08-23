@@ -1,0 +1,29 @@
+.Wrapper {
+	background: #eee;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 25px 10px;
+	position: relative;
+
+	label {
+		position: absolute;
+		top: 50%;
+		right: 3%;
+		transform: translateY(-50%);
+		cursor: pointer;
+
+		svg {
+			width: 26px;
+			height: 24px;
+		}
+	}
+
+	.Input {
+		outline: none;
+		border: none;
+		width: 95%;
+		padding: 10px;
+		border-radius: 50px;
+	}
+}

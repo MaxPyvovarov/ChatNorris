@@ -8,13 +8,13 @@ const ChatList = props => {
 		const {id} = chat;
 		return (
 			<li key={id}>
-				<ChatListItem user={chat} />
+				<ChatListItem user={chat} onSelect={props.onSelect} />
 			</li>
 		);
 	});
 
 	return (
-		<div style={{borderRight: '1px solid #ccc'}}>
+		<div className={classes.Wrapper}>
 			<h2 className={classes.Heading}>Chats</h2>
 			<ul className={classes.ChatList}>{elements}</ul>
 		</div>

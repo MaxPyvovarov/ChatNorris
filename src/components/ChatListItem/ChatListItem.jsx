@@ -6,7 +6,10 @@ import classes from './ChatListItem.module.scss';
 export default class ChatListItem extends Component {
 	render() {
 		return (
-			<div className={classes.ChatListItem}>
+			<div
+				className={classes.ChatListItem}
+				onClick={() => this.props.onSelect(this.props.user.id)}
+			>
 				<div>
 					<Avatar user={this.props.user} className={classes.Avatar} />
 					<div className={classes.Preview}>
