@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import jwt_decode from 'jwt-decode';
-import Chat from '../Chat/Chat';
+import Chat from '../../containers/Chat/Chat';
 
 import classes from './Auth.module.scss';
 

@@ -1,23 +1,23 @@
 import React from 'react';
-import ChatListItem from '../../components/ChatListItem/ChatListItem';
+import ChatListItem from '../ChatListItem/ChatListItem';
 
 import classes from './ChatList.module.scss';
 
 const ChatList = props => {
-	const elements = props.contacts.map(contact => {
-		const {id, ...contactProps} = contact;
+	const elements = props.chats.map(chat => {
+		const {id} = chat;
 		return (
 			<li key={id}>
-				<ChatListItem {...contactProps} />
+				<ChatListItem user={chat} />
 			</li>
 		);
 	});
 
 	return (
-		<>
+		<div style={{borderRight: '1px solid #ccc'}}>
 			<h2 className={classes.Heading}>Chats</h2>
 			<ul className={classes.ChatList}>{elements}</ul>
-		</>
+		</div>
 	);
 };
 
