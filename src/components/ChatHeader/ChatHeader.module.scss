@@ -1,0 +1,12 @@
+.ChatHeader {
+	background: #eee;
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	padding: 15px 20px;
+
+	.Avatar {
+		margin-bottom: 20px;
+	}
+}
