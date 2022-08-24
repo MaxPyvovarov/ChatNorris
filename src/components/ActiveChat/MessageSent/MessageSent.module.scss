@@ -1,0 +1,31 @@
+.MessageSent {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 20px;
+
+	& > div {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		width: 60%;
+	}
+
+	.Message {
+		margin: 0;
+		background: #ddd;
+		padding: 10px 15px;
+		border-radius: 30px;
+		max-width: 100%;
+		height: auto;
+		word-wrap: break-word;
+	}
+
+	.SentDate {
+		display: flex;
+		justify-content: flex-end;
+		font-style: italic;
+		color: #444;
+		font-size: 12px;
+		margin-top: 5px;
+	}
+}

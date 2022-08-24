@@ -8,6 +8,8 @@ import Input from '../../components/UI/Input/Input';
 import img1 from './img/img1.jpg';
 import img2 from './img/img2.jpg';
 import img3 from './img/img3.jpg';
+import img4 from './img/img4.jpg';
+import img5 from './img/img5.jpg';
 
 import classes from './Chat.module.scss';
 
@@ -20,8 +22,8 @@ export default class Chat extends Component {
 				picture: img1,
 				id: 1,
 				history: [
-					{text: 'Hello dear!', status: 'sent'},
-					{text: 'Hello! Max', status: 'recieved'},
+					{text: 'Hello Max!', status: 'sent'},
+					{text: 'Hello! How are you?', status: 'recieved'},
 				],
 			},
 			{
@@ -29,8 +31,8 @@ export default class Chat extends Component {
 				picture: img2,
 				id: 2,
 				history: [
-					{text: 'Hello!!', status: 'sent'},
-					{text: 'Hello Jose!', status: 'recieved'},
+					{text: 'Hello Jose!! W', status: 'sent'},
+					{text: 'Hi, what is up?', status: 'recieved'},
 				],
 			},
 			{
@@ -38,8 +40,26 @@ export default class Chat extends Component {
 				picture: img3,
 				id: 3,
 				history: [
-					{text: 'Hello!!!!!', status: 'sent'},
-					{text: 'Hello John!', status: 'recieved'},
+					{text: 'Hi John!!!!!', status: 'sent'},
+					{text: "Hey bud, what's popping?", status: 'recieved'},
+				],
+			},
+			{
+				name: 'Lucas',
+				picture: img4,
+				id: 4,
+				history: [
+					{text: 'Hello, Lucas!', status: 'sent'},
+					{text: 'Hello, nice to meet you!', status: 'recieved'},
+				],
+			},
+			{
+				name: 'Boris',
+				picture: img5,
+				id: 5,
+				history: [
+					{text: 'Hey Boris! What are you doing today?', status: 'sent'},
+					{text: 'Hello)) I am free today', status: 'recieved'},
 				],
 			},
 		],
@@ -47,7 +67,7 @@ export default class Chat extends Component {
 	};
 
 	onUpdateSearch = term => {
-		this.state.setState({term});
+		this.setState({term});
 	};
 
 	searchUser = (users, term) => {
@@ -65,7 +85,8 @@ export default class Chat extends Component {
 	};
 
 	sendMessageHandler = message => {
-		const newMessage = {text: message, status: 'true'};
+		if (message.trim() === '') return;
+		const newMessage = {text: message, status: 'sent'};
 		const users = [...this.state.users];
 
 		users[this.state.activeChatId - 1].history.push(newMessage);

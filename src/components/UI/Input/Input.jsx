@@ -5,7 +5,7 @@ import classes from './Input.module.scss';
 
 export default class Input extends Component {
 	state = {
-		message: '',
+		message: {text: ''},
 	};
 
 	sendMessageHandler = e => {
@@ -16,8 +16,16 @@ export default class Input extends Component {
 	};
 
 	inputChangeHandler = e => {
-		const message = e.target.value;
+		const message = e.value;
 		this.setState({message});
+	};
+
+	triggerInput = () => {
+		const input = document.querySelector(`.${classes.Input}`);
+		const message =
+			input.value.trim() === '' ? {text: input.value.trim()} : {text: ''};
+		this.setState({message});
+		this.props.onSendMessage(input.value);
 	};
 
 	render() {
@@ -27,7 +35,7 @@ export default class Input extends Component {
 				className={classes.Wrapper}
 				onSubmit={e => this.sendMessageHandler(e)}
 			>
-				<label htmlFor={htmlFor}>
+				<label htmlFor={htmlFor} onClick={this.triggerInput}>
 					<IoMdSend />
 				</label>
 				<input
@@ -35,7 +43,7 @@ export default class Input extends Component {
 					className={classes.Input}
 					placeholder='Type your message'
 					onChange={this.inputChangeHandler}
-					value={this.state.message}
+					value={this.state.message && ''}
 				></input>
 			</form>
 		);
