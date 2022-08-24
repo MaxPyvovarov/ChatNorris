@@ -1,6 +1,8 @@
 import React from 'react';
 import MessageRecieved from './MessageRecieved/MessageRecieved';
 import MessageSent from './MessageSent/MessageSent';
+// import DateForChat from '../Date/DateForChat';
+// import DateForList from '../Date/DateForList';
 
 import classes from './ActiveChat.module.scss';
 
@@ -12,12 +14,14 @@ const ActiveChat = props => {
 					<MessageSent
 						key={index}
 						message={message}
+						sentDate={message.sentDate}
 						picture={props.user.picture}
 					/>
 				) : (
 					<MessageRecieved
 						key={index}
 						message={message}
+						sentDate={message.sentDate}
 						picture={props.user.picture}
 					/>
 				);

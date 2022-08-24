@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import Avatar from '../UI/Avatar/Avatar';
+import DateForList from '../Date/DateForList';
 
 import classes from './ChatListItem.module.scss';
 
 export default class ChatListItem extends Component {
 	render() {
+		const lastMessage = this.props.user.lastMessage;
+		console.log(lastMessage);
 		return (
 			<div
 				className={classes.ChatListItem}
@@ -14,10 +17,10 @@ export default class ChatListItem extends Component {
 					<Avatar user={this.props.user} className={classes.Avatar} />
 					<div className={classes.Preview}>
 						<h4>{this.props.user.name}</h4>
-						<p>Last message</p>
+						<p>{this.props.user.lastMessage}</p>
 					</div>
 				</div>
-				<p className={classes.Date}>Date</p>
+				<p className={classes.Date}>{DateForList(this.props.sentDate)}</p>
 			</div>
 		);
 	}

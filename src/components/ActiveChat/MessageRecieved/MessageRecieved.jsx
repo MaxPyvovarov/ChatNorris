@@ -1,4 +1,5 @@
 import React from 'react';
+import DateForChat from '../../Date/DateForChat';
 
 import classes from './MessageRecieved.module.scss';
 
@@ -8,7 +9,7 @@ const MessageRecieved = props => {
 			<img src={props.picture} alt='Avatar' />
 			<div>
 				<p className={classes.Message}>{props.message.text.trim()}</p>
-				<span className={classes.SentDate}>4/22/17, 6:21 AM</span>
+				<span className={classes.SentDate}>{DateForChat(props.sentDate)}</span>
 			</div>
 		</div>
 	);

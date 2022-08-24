@@ -21,4 +21,6 @@
 .Wrapper {
 	border-right: 1px solid #ddd;
 	flex-grow: 1;
+	overflow: scroll;
+	overflow-x: hidden;
 }
