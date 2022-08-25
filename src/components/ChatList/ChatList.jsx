@@ -4,7 +4,6 @@ import ChatListItem from '../ChatListItem/ChatListItem';
 import classes from './ChatList.module.scss';
 
 const ChatList = props => {
-	console.log(props);
 	const elements = props.chats.map(chat => {
 		const {id} = chat;
 		const date = chat.history[chat.history.length - 1].sentDate;

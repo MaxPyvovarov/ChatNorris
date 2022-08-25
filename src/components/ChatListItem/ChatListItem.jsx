@@ -6,8 +6,6 @@ import classes from './ChatListItem.module.scss';
 
 export default class ChatListItem extends Component {
 	render() {
-		const lastMessage = this.props.user.lastMessage;
-		console.log(lastMessage);
 		return (
 			<div
 				className={classes.ChatListItem}

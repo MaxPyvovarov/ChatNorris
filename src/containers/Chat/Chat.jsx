@@ -4,6 +4,8 @@ import ChatList from '../../components/ChatList/ChatList';
 import ActiveChatHeader from '../../components/ActiveChatHeader/ActiveChatHeader';
 import ActiveChat from '../../components/ActiveChat/ActiveChat';
 import Input from '../../components/UI/Input/Input';
+// import axios from 'axios';
+// import getJoke from '../../components/axios/axiosChuckNorris';
 
 import img1 from './img/img1.jpg';
 import img2 from './img/img2.jpg';
@@ -30,7 +32,7 @@ export default class Chat extends Component {
 				history: [
 					{text: 'Hello Max!', status: 'sent', sentDate: randomDate()},
 					{
-						text: 'Hello! How are you?',
+						text: 'Hello. how are you?',
 						status: 'recieved',
 						sentDate: randomDate(),
 					},

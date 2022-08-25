@@ -1,8 +1,6 @@
 import React from 'react';
 import MessageRecieved from './MessageRecieved/MessageRecieved';
 import MessageSent from './MessageSent/MessageSent';
-// import DateForChat from '../Date/DateForChat';
-// import DateForList from '../Date/DateForList';
 
 import classes from './ActiveChat.module.scss';
 
