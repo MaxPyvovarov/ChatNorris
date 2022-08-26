@@ -5,7 +5,7 @@ import ActiveChatHeader from '../../components/ActiveChatHeader/ActiveChatHeader
 import ActiveChat from '../../components/ActiveChat/ActiveChat';
 import Input from '../../components/UI/Input/Input';
 // import axios from 'axios';
-// import getJoke from '../../components/axios/axiosChuckNorris';
+import {getJokeRequest} from '../../components/axios/axiosChuckNorris';
 
 import img1 from './img/img1.jpg';
 import img2 from './img/img2.jpg';
@@ -28,11 +28,13 @@ export default class Chat extends Component {
 				name: 'Max',
 				picture: img1,
 				id: 1,
+				hasNewMessage: false,
+				touched: false,
 				lastMessage: 'Hello! How are you?',
 				history: [
 					{text: 'Hello Max!', status: 'sent', sentDate: randomDate()},
 					{
-						text: 'Hello. how are you?',
+						text: 'Hello! How are you?',
 						status: 'recieved',
 						sentDate: randomDate(),
 					},
@@ -42,6 +44,8 @@ export default class Chat extends Component {
 				name: 'Josefina',
 				picture: img2,
 				id: 2,
+				hasNewMessage: false,
+				touched: false,
 				lastMessage: 'Hi, what is up?',
 				history: [
 					{text: 'Hello Jose!! W', status: 'sent', sentDate: randomDate()},
@@ -52,6 +56,8 @@ export default class Chat extends Component {
 				name: 'John',
 				picture: img3,
 				id: 3,
+				hasNewMessage: false,
+				touched: false,
 				lastMessage: "Hey bud, what's popping?",
 				history: [
 					{text: 'Hi John!!!!!', status: 'sent', sentDate: randomDate()},
@@ -66,6 +72,8 @@ export default class Chat extends Component {
 				name: 'Lucas',
 				picture: img4,
 				id: 4,
+				hasNewMessage: false,
+				touched: false,
 				lastMessage: 'Hello, nice to meet you!',
 				history: [
 					{text: 'Hello, Lucas!', status: 'sent', sentDate: randomDate()},
@@ -80,6 +88,8 @@ export default class Chat extends Component {
 				name: 'Boris',
 				picture: img5,
 				id: 5,
+				hasNewMessage: false,
+				touched: false,
 				lastMessage: 'Hello)) I am free today',
 				history: [
 					{
@@ -98,6 +108,8 @@ export default class Chat extends Component {
 				name: 'Sara',
 				picture: img6,
 				id: 6,
+				hasNewMessage: false,
+				touched: false,
 				lastMessage: 'Hello)) I am free today',
 				history: [
 					{
@@ -131,17 +143,52 @@ export default class Chat extends Component {
 	};
 
 	selectChatHandler = activeChatId => {
-		this.setState({activeChatId});
+		const newUsers = [...this.state.users];
+		newUsers[activeChatId - 1].touched = true;
+		this.setState({
+			users: newUsers,
+			activeChatId: activeChatId,
+		});
 	};
 
 	sendMessageHandler = message => {
 		if (message.trim() === '') return;
 		const newMessage = {text: message, status: 'sent', sentDate: new Date()};
 		const users = [...this.state.users];
-		users[this.state.activeChatId - 1].history.push(newMessage);
-		users[this.state.activeChatId - 1].lastMessage = newMessage.text;
+		const id = this.state.activeChatId - 1;
+		users[id].history.push(newMessage);
+		users[id].lastMessage = newMessage.text;
 		this.setState({users});
+		setTimeout(() => {
+			this.getJokeHandler(id);
+		}, 2000);
 	};
+
+	async getJokeHandler(id) {
+		const newUsers = this.state.users;
+		await getJokeRequest().then(joke => {
+			newUsers[id].history.push({
+				text: joke.toString(),
+				status: 'recived',
+				sentDate: new Date(),
+			});
+			newUsers[id].lastMessage = joke.toString();
+			newUsers[id].hasNewMessage = true;
+			newUsers[id].touched = false;
+		});
+		this.setState({users: newUsers});
+	}
+
+	// users.forEach(user => {
+	// 	getJokeRequest().then(joke => {
+	// 		user.history.push({
+	// 			text: joke.toString(),
+	// 			status: 'recived',
+	// 			sentDate: new Date(),
+	// 		});
+	// 		user.lastMessage = joke.toString();
+	// 	});
+	// });
 
 	render() {
 		const visibileChats = this.searchUser(this.state.users, this.state.term);

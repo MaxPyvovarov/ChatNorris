@@ -6,10 +6,20 @@ import classes from './ChatListItem.module.scss';
 
 export default class ChatListItem extends Component {
 	render() {
+		let touched = this.props.user.touched;
+		let hasNewMessage = this.props.user.hasNewMessage;
+		console.log('item', touched);
 		return (
 			<div
-				className={classes.ChatListItem}
-				onClick={() => this.props.onSelect(this.props.user.id)}
+				className={
+					!touched && hasNewMessage
+						? `${classes.ChatListItem} ${classes.HasNewMessage}`
+						: classes.ChatListItem
+				}
+				onClick={() => {
+					this.props.onSelect(this.props.user.id);
+					touched = true;
+				}}
 			>
 				<div>
 					<Avatar user={this.props.user} className={classes.Avatar} />

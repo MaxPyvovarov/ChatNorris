@@ -47,3 +47,12 @@
 		flex-shrink: 0;
 	}
 }
+
+.HasNewMessage {
+	background: rgb(241, 142, 96);
+
+	&:hover {
+		background: rgb(219, 103, 48);
+		cursor: pointer;
+	}
+}

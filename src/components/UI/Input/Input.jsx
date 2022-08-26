@@ -33,7 +33,9 @@ export default class Input extends Component {
 		return (
 			<form
 				className={classes.Wrapper}
-				onSubmit={e => this.sendMessageHandler(e)}
+				onSubmit={e => {
+					this.sendMessageHandler(e);
+				}}
 			>
 				<label htmlFor={htmlFor} onClick={this.triggerInput}>
 					<IoMdSend />
