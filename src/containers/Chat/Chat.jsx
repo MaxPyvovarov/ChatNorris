@@ -21,122 +21,134 @@ function randomDate() {
 }
 
 export default class Chat extends Component {
-	state = {
-		activeChatId: 1,
-		users: [
-			{
-				name: 'Max',
-				picture: img1,
-				id: 1,
-				hasNewMessage: false,
-				touched: false,
-				order: 0,
-				lastMessage: 'Hello! How are you?',
-				history: [
-					{text: 'Hello Max!', status: 'sent', sentDate: randomDate()},
-					{
-						text: 'Hello! How are you?',
-						status: 'recieved',
-						sentDate: randomDate(),
-					},
-				],
-			},
-			{
-				name: 'Josefina',
-				picture: img2,
-				id: 2,
-				hasNewMessage: false,
-				touched: false,
-				order: 0,
-				lastMessage: 'Hi, what is up?',
-				history: [
-					{text: 'Hello Jose!! W', status: 'sent', sentDate: randomDate()},
-					{text: 'Hi, what is up?', status: 'recieved', sentDate: randomDate()},
-				],
-			},
-			{
-				name: 'John',
-				picture: img3,
-				id: 3,
-				hasNewMessage: false,
-				touched: false,
-				order: 0,
-				lastMessage: "Hey bud, what's popping?",
-				history: [
-					{text: 'Hi John!!!!!', status: 'sent', sentDate: randomDate()},
-					{
-						text: "Hey bud, what's popping?",
-						status: 'recieved',
-						sentDate: randomDate(),
-					},
-				],
-			},
-			{
-				name: 'Lucas',
-				picture: img4,
-				id: 4,
-				hasNewMessage: false,
-				touched: false,
-				order: 0,
-				lastMessage: 'Hello, nice to meet you!',
-				history: [
-					{text: 'Hello, Lucas!', status: 'sent', sentDate: randomDate()},
-					{
-						text: 'Hello, nice to meet you!',
-						status: 'recieved',
-						sentDate: randomDate(),
-					},
-				],
-			},
-			{
-				name: 'Boris',
-				picture: img5,
-				id: 5,
-				hasNewMessage: false,
-				touched: false,
-				order: 0,
-				lastMessage: 'Hello)) I am free today',
-				history: [
-					{
-						text: 'Hey Boris! What are you doing today?',
-						status: 'sent',
-						sentDate: randomDate(),
-					},
-					{
-						text: 'Hello)) I am free today',
-						status: 'recieved',
-						sentDate: randomDate(),
-					},
-				],
-			},
-			{
-				name: 'Sara',
-				picture: img6,
-				id: 6,
-				hasNewMessage: false,
-				touched: false,
-				order: 0,
-				lastMessage: 'Hello)) I am free today',
-				history: [
-					{
-						text: 'Hey Sara! How are you doing today?',
-						status: 'sent',
-						sentDate: randomDate(),
-					},
-					{
-						text: 'Hello)) I am fine and you?',
-						status: 'recieved',
-						sentDate: randomDate(),
-					},
-				],
-			},
-		],
-		term: '',
-		counter: 0,
-	};
+	state =
+		sessionStorage.getItem('state') === null
+			? {
+					activeChatId: 1,
+					users: [
+						{
+							name: 'Max',
+							picture: img1,
+							id: 1,
+							hasNewMessage: false,
+							touched: false,
+							order: 0,
+							lastMessage: 'Hello! How are you?',
+							history: [
+								{text: 'Hello Max!', status: 'sent', sentDate: randomDate()},
+								{
+									text: 'Hello! How are you?',
+									status: 'recieved',
+									sentDate: randomDate(),
+								},
+							],
+						},
+						{
+							name: 'Josefina',
+							picture: img2,
+							id: 2,
+							hasNewMessage: false,
+							touched: false,
+							order: 0,
+							lastMessage: 'Hi, what is up?',
+							history: [
+								{
+									text: 'Hello Jose!! W',
+									status: 'sent',
+									sentDate: randomDate(),
+								},
+								{
+									text: 'Hi, what is up?',
+									status: 'recieved',
+									sentDate: randomDate(),
+								},
+							],
+						},
+						{
+							name: 'John',
+							picture: img3,
+							id: 3,
+							hasNewMessage: false,
+							touched: false,
+							order: 0,
+							lastMessage: "Hey bud, what's popping?",
+							history: [
+								{text: 'Hi John!!!!!', status: 'sent', sentDate: randomDate()},
+								{
+									text: "Hey bud, what's popping?",
+									status: 'recieved',
+									sentDate: randomDate(),
+								},
+							],
+						},
+						{
+							name: 'Lucas',
+							picture: img4,
+							id: 4,
+							hasNewMessage: false,
+							touched: false,
+							order: 0,
+							lastMessage: 'Hello, nice to meet you!',
+							history: [
+								{text: 'Hello, Lucas!', status: 'sent', sentDate: randomDate()},
+								{
+									text: 'Hello, nice to meet you!',
+									status: 'recieved',
+									sentDate: randomDate(),
+								},
+							],
+						},
+						{
+							name: 'Boris',
+							picture: img5,
+							id: 5,
+							hasNewMessage: false,
+							touched: false,
+							order: 0,
+							lastMessage: 'Hello)) I am free today',
+							history: [
+								{
+									text: 'Hey Boris! What are you doing today?',
+									status: 'sent',
+									sentDate: randomDate(),
+								},
+								{
+									text: 'Hello)) I am free today',
+									status: 'recieved',
+									sentDate: randomDate(),
+								},
+							],
+						},
+						{
+							name: 'Sara',
+							picture: img6,
+							id: 6,
+							hasNewMessage: false,
+							touched: false,
+							order: 0,
+							lastMessage: 'Hello)) I am free today',
+							history: [
+								{
+									text: 'Hey Sara! How are you doing today?',
+									status: 'sent',
+									sentDate: randomDate(),
+								},
+								{
+									text: 'Hello)) I am fine and you?',
+									status: 'recieved',
+									sentDate: randomDate(),
+								},
+							],
+						},
+					],
+					term: '',
+					counter: 0,
+			  }
+			: JSON.parse(sessionStorage.getItem('state'));
 
 	onUpdateSearch = term => {
 		this.setState({term});
+		this.setStorage();
 	};
 
 	searchUser = (users, term) => {
@@ -156,6 +168,7 @@ export default class Chat extends Component {
 			users: newUsers,
 			activeChatId: activeChatId,
 		});
+		this.setStorage();
 	};
 
 	sendMessageHandler = message => {
@@ -171,6 +184,7 @@ export default class Chat extends Component {
 		setTimeout(() => {
 			this.getJokeHandler(id);
 		}, 2000);
+		this.setStorage();
 	};
 
 	async getJokeHandler(id) {
@@ -188,19 +202,17 @@ export default class Chat extends Component {
 			newUsers[id].order -= ++counter;
 		});
 		this.setState({users: newUsers, counter});
-		console.log(this.state);
+		this.setStorage();
 	}
 
-	// users.forEach(user => {
-	// 	getJokeRequest().then(joke => {
-	// 		user.history.push({
-	// 			text: joke.toString(),
-	// 			status: 'recived',
-	// 			sentDate: new Date(),
-	// 		});
-	// 		user.lastMessage = joke.toString();
-	// 	});
-	// });
+	setStorage() {
+		const state = this.state;
+		sessionStorage.setItem('state', JSON.stringify(state));
+	}
+	// getStorage() {
+	// 	const newState = JSON.parse(sessionStorage.getItem('state'));
+	// 	this.setState({state: newState});
+	// }
 
 	render() {
 		const visibileChats = this.searchUser(this.state.users, this.state.term);
