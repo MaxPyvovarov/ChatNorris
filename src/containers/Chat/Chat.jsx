@@ -30,6 +30,7 @@ export default class Chat extends Component {
 				id: 1,
 				hasNewMessage: false,
 				touched: false,
+				order: 0,
 				lastMessage: 'Hello! How are you?',
 				history: [
 					{text: 'Hello Max!', status: 'sent', sentDate: randomDate()},
@@ -46,6 +47,7 @@ export default class Chat extends Component {
 				id: 2,
 				hasNewMessage: false,
 				touched: false,
+				order: 0,
 				lastMessage: 'Hi, what is up?',
 				history: [
 					{text: 'Hello Jose!! W', status: 'sent', sentDate: randomDate()},
@@ -58,6 +60,7 @@ export default class Chat extends Component {
 				id: 3,
 				hasNewMessage: false,
 				touched: false,
+				order: 0,
 				lastMessage: "Hey bud, what's popping?",
 				history: [
 					{text: 'Hi John!!!!!', status: 'sent', sentDate: randomDate()},
@@ -74,6 +77,7 @@ export default class Chat extends Component {
 				id: 4,
 				hasNewMessage: false,
 				touched: false,
+				order: 0,
 				lastMessage: 'Hello, nice to meet you!',
 				history: [
 					{text: 'Hello, Lucas!', status: 'sent', sentDate: randomDate()},
@@ -90,6 +94,7 @@ export default class Chat extends Component {
 				id: 5,
 				hasNewMessage: false,
 				touched: false,
+				order: 0,
 				lastMessage: 'Hello)) I am free today',
 				history: [
 					{
@@ -110,6 +115,7 @@ export default class Chat extends Component {
 				id: 6,
 				hasNewMessage: false,
 				touched: false,
+				order: 0,
 				lastMessage: 'Hello)) I am free today',
 				history: [
 					{
@@ -126,6 +132,7 @@ export default class Chat extends Component {
 			},
 		],
 		term: '',
+		counter: 0,
 	};
 
 	onUpdateSearch = term => {
@@ -156,9 +163,11 @@ export default class Chat extends Component {
 		const newMessage = {text: message, status: 'sent', sentDate: new Date()};
 		const users = [...this.state.users];
 		const id = this.state.activeChatId - 1;
+		let counter = this.state.counter;
 		users[id].history.push(newMessage);
 		users[id].lastMessage = newMessage.text;
-		this.setState({users});
+		users[id].order -= ++counter;
+		this.setState({users, counter});
 		setTimeout(() => {
 			this.getJokeHandler(id);
 		}, 2000);
@@ -166,6 +175,7 @@ export default class Chat extends Component {
 
 	async getJokeHandler(id) {
 		const newUsers = this.state.users;
+		let counter = this.state.counter;
 		await getJokeRequest().then(joke => {
 			newUsers[id].history.push({
 				text: joke.toString(),
@@ -175,8 +185,10 @@ export default class Chat extends Component {
 			newUsers[id].lastMessage = joke.toString();
 			newUsers[id].hasNewMessage = true;
 			newUsers[id].touched = false;
+			newUsers[id].order -= ++counter;
 		});
-		this.setState({users: newUsers});
+		this.setState({users: newUsers, counter});
+		console.log(this.state);
 	}
 
 	// users.forEach(user => {

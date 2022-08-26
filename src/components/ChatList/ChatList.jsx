@@ -4,15 +4,13 @@ import ChatListItem from '../ChatListItem/ChatListItem';
 import classes from './ChatList.module.scss';
 
 const ChatList = props => {
-	let order = -1;
 	const elements = props.chats.map(chat => {
 		const {id} = chat;
 		const date = chat.history[chat.history.length - 1].sentDate;
-		console.log('list', chat.touched);
 		return (
 			<React.Fragment key={id}>
 				{chat.hasNewMessage ? (
-					<li style={{order: order--}}>
+					<li style={{order: chat.order}}>
 						<ChatListItem
 							user={chat}
 							onSelect={props.onSelect}

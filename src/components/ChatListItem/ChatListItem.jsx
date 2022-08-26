@@ -8,7 +8,6 @@ export default class ChatListItem extends Component {
 	render() {
 		let touched = this.props.user.touched;
 		let hasNewMessage = this.props.user.hasNewMessage;
-		console.log('item', touched);
 		return (
 			<div
 				className={
