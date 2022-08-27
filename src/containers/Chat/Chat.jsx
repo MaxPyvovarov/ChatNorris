@@ -183,7 +183,7 @@ export default class Chat extends Component {
 		this.setState({users, counter});
 		setTimeout(() => {
 			this.getJokeHandler(id);
-		}, 2000);
+		}, 10000);
 		this.setStorage();
 	};
 
