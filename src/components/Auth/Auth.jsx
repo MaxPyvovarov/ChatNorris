@@ -23,9 +23,11 @@ function Auth() {
 		// eslint-disable-next-line no-undef
 		google.accounts.id.initialize({
 			client_id:
-				'463651140560-ggvcqa857oflabvss4ndokmg86m3a0gd.apps.googleusercontent.com',
+				'463651140560-ljhpcu5tde8df8onl8eva9mdmcstid4b.apps.googleusercontent.com',
 			callback: handleCallbackResponse,
 		});
+		// eslint-disable-next-line no-undef
+		google.accounts.list({});
 
 		// eslint-disable-next-line no-undef
 		google.accounts.id.renderButton(document.getElementById('signInDiv'), {
