@@ -23,7 +23,7 @@ function Auth() {
 		// eslint-disable-next-line no-undef
 		google.accounts.id.initialize({
 			client_id:
-				'463651140560-ljhpcu5tde8df8onl8eva9mdmcstid4b.apps.googleusercontent.com',
+				'463651140560-mh8da58idehi69ej9n442dgpb0ji4dng.apps.googleusercontent.com',
 			callback: handleCallbackResponse,
 		});
 		// eslint-disable-next-line no-undef
