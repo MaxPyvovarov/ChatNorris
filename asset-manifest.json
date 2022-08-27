@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ChatNorris/static/css/main.90bf45be.css",
-    "main.js": "/ChatNorris/static/js/main.1ec0b210.js",
+    "main.js": "/ChatNorris/static/js/main.5d7700d0.js",
     "static/js/787.308ee384.chunk.js": "/ChatNorris/static/js/787.308ee384.chunk.js",
     "static/media/img1.jpg": "/ChatNorris/static/media/img1.9599dcdf4647539d5eaa.jpg",
     "static/media/background.png": "/ChatNorris/static/media/background.e825c160eb7d27395025.png",
@@ -12,11 +12,11 @@
     "static/media/img2.jpg": "/ChatNorris/static/media/img2.98242bfdd64d7f67e663.jpg",
     "index.html": "/ChatNorris/index.html",
     "main.90bf45be.css.map": "/ChatNorris/static/css/main.90bf45be.css.map",
-    "main.1ec0b210.js.map": "/ChatNorris/static/js/main.1ec0b210.js.map",
+    "main.5d7700d0.js.map": "/ChatNorris/static/js/main.5d7700d0.js.map",
     "787.308ee384.chunk.js.map": "/ChatNorris/static/js/787.308ee384.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.90bf45be.css",
-    "static/js/main.1ec0b210.js"
+    "static/js/main.5d7700d0.js"
   ]
 }
